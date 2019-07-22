@@ -1,11 +1,13 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
-const app = express();
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialPath = path.join(__dirname, "../templates/partials");
 const geocode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
+const app = express();
+
+const port = process.env.PORT || 3000;
 
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
@@ -83,6 +85,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("listening on port 3000");
+app.listen(port, () => {
+  console.log("listening on port " + port);
 });
